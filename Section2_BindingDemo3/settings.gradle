@@ -1,0 +1,2 @@
+rootProject.name = "Section2_BindingDemo3"
+include ':app'
