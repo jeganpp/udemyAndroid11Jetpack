@@ -11,11 +11,14 @@
         <EditText
             android:id="@+id/input"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:inputType="number"
+            android:layout_height="wrap_content"
             android:layout_marginTop="188dp"
+            android:inputType="number"
+            android:textSize="34sp"
+            android:textAlignment="center"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="0dp"></EditText>
+            tools:layout_editor_absoluteX="0dp"
+            android:gravity="center_horizontal"></EditText>
 
         <Button
             android:id="@+id/add"
@@ -31,10 +34,11 @@
 
         <TextView
             android:id="@+id/sum"
-            android:layout_width="160dp"
+            android:layout_width="wrap_content"
             android:layout_height="79dp"
             android:layout_marginBottom="208dp"
             android:text="             "
+            android:textSize="48sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

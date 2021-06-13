@@ -1,27 +1,29 @@
 package com.example.section3_viewmodeldemo1
 
+import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import com.example.section3_viewmodeldemo1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
-    private var count : Int = 0
+    private lateinit var vm : MainActivityViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("Jegan", "inside onCreate")
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        vm = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         binding.apply {
-            //count.text = this.count.toString()
+            count.text = vm.getCount().toString()
             button.setOnClickListener { incrementCount() }
         }
     }
 
     private fun incrementCount() {
-        this.count ++
-        binding.count.text = this.count.toString()
+        binding.count.text = vm.getUpdatedCount().toString()
     }
 
     override fun onStart() {
