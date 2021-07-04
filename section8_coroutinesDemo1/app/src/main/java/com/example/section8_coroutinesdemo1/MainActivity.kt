@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.apply {
             downloadUserDatabutton.setOnClickListener {
-                CoroutineScope(Dispatchers.IO).launch { downloadUserData() }
+                CoroutineScope(Dispatchers.Main).launch { downloadUserData() }
             }
             countbutton.setOnClickListener {
                 countTextView.text = count++.toString()
@@ -25,11 +25,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     suspend private fun downloadUserData() {
-        for (i in 1..20000) {
-            withContext(Dispatchers.Main) {
-                //Log.i(tag, "downloading user data $i in ${Thread.currentThread().name}")
-                binding.userDataTextView.text = "downloading user data $i in ${Thread.currentThread().name}"
-            }
-        }
+        binding.userDataTextView.text = UserDataManager().getTotalUserCount().toString()
     }
 }
